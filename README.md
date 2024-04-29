@@ -8,4 +8,4 @@ This is a tutorial code demonstrating how to use Python write game. Pull request
 ```bash
 python3 tetris.py
 ```
-
+<img src="./tetris.gif" width="400">

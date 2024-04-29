@@ -94,7 +94,7 @@ class Tetris(tk.Tk):
         self.draw_shape(self.shape, self.shape_x, self.shape_y, self.color)
         if self.game_over:
             self.canvas.create_text(100, 200, anchor='center',
-                                    text='Game Over', fill='red', font=('Arial', 32))
+                                    text='Game Over', fill='red', font=('Arial', 20))
         self.canvas.create_text(10, 10, anchor='nw',
                                 text=f'Score: {self.score} | ruzhila.cn', fill='blue')
 
