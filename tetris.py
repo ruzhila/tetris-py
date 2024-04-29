@@ -3,13 +3,12 @@ import random
 shapes = [
     [[1, 1, 1, 1]],                             # I shape
     [[1, 1], [1, 1]],                           # O shape
-    [[1, 1, 0],[0, 1, 1],[0, 0, 0]],            # Z shape
+    [[1, 1, 0], [0, 1, 1], [0, 0, 0]],          # Z shape
     [[0, 1, 1], [1, 1]],                        # S shape
     [[1, 1, 1], [0, 1, 0]],                     # T shape
     [[0, 1, 1], [1, 1, 0]],                     # L shape
     [[1, 1, 1], [0, 0, 1]]                      # J shape
 ]
-colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'cyan']
 
 
 class Tetris(tk.Tk):
@@ -19,8 +18,7 @@ class Tetris(tk.Tk):
         self.canvas = tk.Canvas(self, width=200, height=400, bg='white')
         self.canvas.pack()
         self.board = [[0] * 10 for _ in range(20)]
-        self.score = 0
-        self.game_over = False
+        self.score, self.game_over = 0, False
         self.new_shape()
         self.bind("<Key>", self.key_press)
         self.after(1000, self.fall)
@@ -41,12 +39,11 @@ class Tetris(tk.Tk):
         self.shape = random.choice(shapes)
         self.shape_x = 5
         self.shape_y = 0
-        self.color = random.choice(colors)
+        self.color = random.choice(['blue', 'green', 'yellow', 'pink'])
 
     def fall(self):
-        if not self.can_move(0, 0):
-            self.game_over = True
-        else:
+        self.game_over = not self.can_move(0, 0)
+        if not self.game_over:
             if self.can_move(0, 1):
                 self.shape_y += 1
             else:
